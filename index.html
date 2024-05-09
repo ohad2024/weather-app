@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Weather App</title>
+    <style>
+        body {
+            background-color: #66B2FF;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid white;
+        }
+
+        #graph {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <form action="/" method="post">
+            <input type="text" id="cityName" name="cityName" placeholder="City">
+            <button>Find</button>
+        </form>
+        {% if data %}
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Icon</th>
+                <th>Main</th>
+                <th>Description</th>
+                <th>Day Temperature</th>
+                <th>Night Temperature</th>
+            </tr>
+            {% for day_weather in data %}
+            <tr>
+                <td>
+                    {% if loop.index == 1 %}
+                        Today
+                    {% elif loop.index == 2 %}
+                        Tomorrow
+                    {% else %}
+                        Day {{ loop.index }}
+                    {% endif %}
+                </td>
+                <td><img class="weather-icon" src="https://openweathermap.org/img/wn/{{ day_weather.icon }}@2x.png" alt="icon"></td>
+                <td>{{ day_weather.main }}</td>
+                <td>{{ day_weather.description }}</td>
+                <td>{{ day_weather.day_temperature }}</td>
+                <td>{{ day_weather.night_temperature }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div id="graph">
+            <div id="openweathermap-widget-11"></div>
+            <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+            <script>
+                window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+                window.myWidgetParam.push({
+                    id: 11,
+                    cityid: '{{ id1 }}',
+                    appid: '90be93527babd2a823f16c364325e6d1',
+                    units: 'metric',
+                    containerid: 'openweathermap-widget-11'
+                });
+                (function() {
+                    var script = document.createElement('script');
+                    script.async = true;
+                    script.charset = "utf-8";
+                    script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(script, s);
+                })();
+            </script>
+
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
