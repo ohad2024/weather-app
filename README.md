@@ -13,5 +13,5 @@ This Weather App is a Flask-based web application that provides a 7-day weather 
 - Flask
 - HTML/CSS
 - OpenWeatherMap API
-
+- Dataclass
 
