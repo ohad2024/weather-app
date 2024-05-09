@@ -14,7 +14,4 @@ This Weather App is a Flask-based web application that provides a 7-day weather 
 - HTML/CSS
 - OpenWeatherMap API
 
-## Installation
-First, clone this repository to your local machine using:
-```bash
-git clone [URL to your GitHub repo]
+
