@@ -1,7 +1,7 @@
 # Weather App
 
 ## Description
-This Weather App is a Flask-based web application that provides a 7-day weather forecast for any given city using the OpenWeatherMap API. The app displays key weather information such as the daily temperature highs and lows, main weather conditions, and weather icons.
+This Weather App is a Flask-based web application that provides a 7-day weather forecast for any given city using the OpenWeatherMap API. The app displays key weather information such as daily temperature highs and lows, main weather conditions, and weather icons.
 
 ## Features
 - Real-time weather forecasting for cities around the world.
@@ -10,8 +10,8 @@ This Weather App is a Flask-based web application that provides a 7-day weather 
 
 ## Technologies Used
 - Python
-- Flask
-- HTML/CSS
-- OpenWeatherMap API
-- Dataclass
-
+  - Dataclasses: For defining concise data models.
+  - Decorators: Utilized for routing in Flask and enhancing function behaviors.
+- Flask: For creating the web application backend.
+- HTML/CSS: For the frontend design.
+- OpenWeatherMap API: For fetching real-time weather data.
